@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #251b4d;
+  --color-foreground: #ffffff;
+  
+  --color-accent-cyan: #00d9ff;
+  --color-accent-magenta: #ff006e;
+  --color-accent-orange: #ff8c42;
+  --color-accent-yellow: #ffd700;
+  --color-accent-green: #00ff88;
+  
+  --color-glass-bg: rgba(35, 27, 77, 0.7);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  
+  --font-inter: "Inter", "Segoe UI", sans-serif;
+}
+
+
+@layer base {
+  :root {
+    --background: 255 12% 16%;
+    --foreground: 0 0% 100%;
+    
+    --card: 255 12% 20% / 0.08;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 255 12% 16%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 191 100% 50%; /* Cyan */
+    --primary-foreground: 255 12% 16%;
+    
+    --secondary: 334 100% 53%; /* Magenta */
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 240 10% 80% / 0.1;
+    --muted-foreground: 240 10% 70%;
+    
+    --accent: 191 100% 50%;
+    --accent-foreground: 255 12% 16%;
+    
+    --radius: 1.5rem; /* 24px */
+  }
+}
+
+body {
+  background: #1f1342;
+  color: white;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass {
+  background: rgba(35, 27, 77, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+
+.glass-dropdown {
+  background: rgba(45, 27, 105, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.text-gradient-cyan-magenta {
+  background: linear-gradient(90deg, #00d9ff, #ff006e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-orange-yellow {
+  background: linear-gradient(135deg, #ff8c42, #ffd700);
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.4s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar for Glass UI */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
