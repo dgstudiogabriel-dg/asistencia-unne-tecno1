@@ -1,32 +1,40 @@
 import { NextResponse } from 'next/server';
 import { getAsistencias, addAsistencia, updateAsistencia, deleteAsistencia } from '@/lib/db';
+import { recordAsistenciaInSheet, getAsistenciasFromSheet } from '@/lib/googleSheets';
+
+
 
 export async function GET() {
-  const asistencias = getAsistencias();
-  return NextResponse.json(asistencias);
+  try {
+    const asistencias = await getAsistenciasFromSheet();
+    return NextResponse.json(asistencias);
+  } catch (error: any) {
+    console.error('Error fetching attendance:', error);
+    // Fallback to local if sheet fetch fails (optional, but safer)
+    const localAsistencias = getAsistencias();
+    return NextResponse.json(localAsistencias);
+  }
 }
+
 
 export async function POST(request: Request) {
-  const data = await request.json();
-  const newAsistencia = addAsistencia(data);
+  try {
+    const data = await request.json();
+    
+    // We still call addAsistencia for local tracking/fallback if needed, 
+    // but the primary action is Google Sheets.
+    const newAsistencia = addAsistencia(data);
 
-  // Background sync to Google Sheets (if URL configured)
-  const gSheetsUrl = process.env.GOOGLE_SHEETS_URL;
-  if (gSheetsUrl) {
-    try {
-      fetch(gSheetsUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newAsistencia),
-        mode: 'no-cors' // Google Script usually responds with CORS issues but still executes
-      }).catch(err => console.error('Sync failed:', err));
-    } catch (e) {
-      console.error('Error initiating sync:', e);
-    }
+    // Primary Sync to Google Sheets
+    await recordAsistenciaInSheet(newAsistencia);
+
+    return NextResponse.json(newAsistencia);
+  } catch (error: any) {
+    console.error('Error recording attendance:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
-
-  return NextResponse.json(newAsistencia);
 }
+
 
 
 export async function PUT(request: Request) {
