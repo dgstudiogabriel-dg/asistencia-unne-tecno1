@@ -108,7 +108,7 @@ export function FormularioQR() {
           />
         </div>
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white tracking-tight">Tecnología Gráfica I_2026</h1>
+          <h1 className="text-3xl font-bold text-white tracking-tight">Tecnología Gráfica I</h1>
           <p className="text-gray-400">Sistema de Control de Asistencia</p>
         </div>
       </div>
@@ -192,7 +192,7 @@ export function FormularioQR() {
       </GlassCard>
 
       <div className="text-center pb-8">
-        <p className="text-xs text-gray-500">© 2026 UNNE - Tecno 1. Ventana de asistencia: 08:00 - 09:00 AM</p>
+        <p className="text-xs text-gray-500">© 2026 UNNE - Ventana de asistencia: 08:00 - 09:00 AM - Creado por DG José Gabriel Alderete</p>
       </div>
     </div>
   );

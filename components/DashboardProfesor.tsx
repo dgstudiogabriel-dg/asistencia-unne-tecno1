@@ -110,7 +110,7 @@ export function DashboardProfesor() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-4xl font-bold text-white tracking-tight">Dashboard Profesor</h1>
-          <p className="text-gray-400 mt-1">Gestión de asistencias - Tecnología Gráfica I_2026</p>
+          <p className="text-gray-400 mt-1">Gestión de asistencias - Tecnología Gráfica I</p>
         </div>
         <div className="flex items-center space-x-3">
           <div className="relative group">
@@ -215,8 +215,7 @@ export function DashboardProfesor() {
       </GlassCard>
 
       <div className="text-center pb-8">
-        <p className="text-xs text-gray-600">FAU UNNE - Tecno 1 Admin Panel. Mostrando datos para {filterDate}</p>
-        <p className="text-xs text-gray-500 mt-1">Creado por DG José Gabriel Alderete</p>
+        <p className="text-xs text-gray-600">FAU UNNE - Admin Panel. Mostrando datos para {filterDate} - Creado por DG José Gabriel Alderete</p>
       </div>
     </div>
   );

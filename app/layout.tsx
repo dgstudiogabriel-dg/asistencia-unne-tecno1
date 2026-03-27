@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Asistencia QR - Tecno 1",
-  description: "Sistema de control de asistencia para Tecnología Gráfica I_2026",
+  description: "Sistema de control de asistencia para Tecnología Gráfica I",
 };
 
 export default function RootLayout({
