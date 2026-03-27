@@ -215,7 +215,7 @@ export function DashboardProfesor() {
       </GlassCard>
 
       <div className="text-center pb-8">
-        <p className="text-xs text-gray-600">UNNE - Tecno 1 Admin Panel. Mostrando datos para {filterDate}</p>
+        <p className="text-xs text-gray-600">FAU UNNE - Tecno 1 Admin Panel. Mostrando datos para {filterDate}</p>
       </div>
     </div>
   );

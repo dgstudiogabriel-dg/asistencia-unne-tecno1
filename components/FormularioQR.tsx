@@ -97,11 +97,15 @@ export function FormularioQR() {
     <div className="max-w-2xl mx-auto space-y-8 px-4">
       {/* Header with UNNE Logo simulation */}
       <div className="flex flex-col items-center space-y-4 mb-8">
-        <div className="w-20 h-20 glass rounded-2xl flex items-center justify-center p-2">
-           {/* UNNE Logo Placeholder */}
-           <div className="w-full h-full bg-gradient-cyan-magenta rounded-xl flex items-center justify-center text-white font-bold text-xs">
-             UNNE
-           </div>
+        <div className="w-24 h-24 glass rounded-2xl flex items-center justify-center p-2 bg-white/10">
+           <Image
+             src="/logo-fau.png"
+             alt="FAU UNNE Logo"
+             width={80}
+             height={80}
+             className="object-contain"
+             priority
+           />
         </div>
         <div className="text-center">
           <h1 className="text-3xl font-bold text-white tracking-tight">TEC GRÁFICA 1</h1>

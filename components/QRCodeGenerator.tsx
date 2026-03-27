@@ -45,7 +45,7 @@ export function QRCodeGenerator() {
           level="H"
           includeMargin={true}
           imageSettings={{
-            src: 'https://via.placeholder.com/60?text=UNNE', // Placeholder logo
+            src: '/logo-fau.png',
             x: undefined,
             y: undefined,
             height: 48,
