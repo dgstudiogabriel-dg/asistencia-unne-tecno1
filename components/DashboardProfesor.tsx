@@ -110,7 +110,7 @@ export function DashboardProfesor() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-4xl font-bold text-white tracking-tight">Dashboard Profesor</h1>
-          <p className="text-gray-400 mt-1">Gestión de asistencias - TEC GRÁFICA 1</p>
+          <p className="text-gray-400 mt-1">Gestión de asistencias - Tecnología Gráfica I_2026</p>
         </div>
         <div className="flex items-center space-x-3">
           <div className="relative group">
