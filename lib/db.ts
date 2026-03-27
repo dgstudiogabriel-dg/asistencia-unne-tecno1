@@ -44,9 +44,20 @@ export function getAsistencias(): Asistencia[] {
 }
 
 export function saveAsistencias(asistencias: Asistencia[]) {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR);
-  fs.writeFileSync(ASISTENCIAS_FILE, JSON.stringify(asistencias, null, 2), 'utf8');
+  // Vercel filesystem is read-only. We skip local saving in production.
+  if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
+    console.log('Skipping local save on Vercel/Production. Using Google Sheets as source of truth.');
+    return;
+  }
+  
+  try {
+    if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR);
+    fs.writeFileSync(ASISTENCIAS_FILE, JSON.stringify(asistencias, null, 2), 'utf8');
+  } catch (error) {
+    console.error('Error saving local asistencias:', error);
+  }
 }
+
 
 export function addAsistencia(asistencia: Omit<Asistencia, 'id'>) {
   const asistencias = getAsistencias();

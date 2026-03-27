@@ -7,14 +7,20 @@ import { recordAsistenciaInSheet, getAsistenciasFromSheet } from '@/lib/googleSh
 export async function GET() {
   try {
     const asistencias = await getAsistenciasFromSheet();
+    // Merge with local only in development for persistence testing
+    if (process.env.NODE_ENV === 'development') {
+      const localAsistencias = getAsistencias();
+      // Simple merge or just return sheets
+      return NextResponse.json(asistencias.length > 0 ? asistencias : localAsistencias);
+    }
     return NextResponse.json(asistencias);
   } catch (error: any) {
     console.error('Error fetching attendance:', error);
-    // Fallback to local if sheet fetch fails (optional, but safer)
     const localAsistencias = getAsistencias();
     return NextResponse.json(localAsistencias);
   }
 }
+
 
 
 export async function POST(request: Request) {
