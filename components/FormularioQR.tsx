@@ -98,14 +98,14 @@ export function FormularioQR() {
       {/* Header with UNNE Logo simulation */}
       <div className="flex flex-col items-center space-y-4 mb-8">
         <div className="w-24 h-24 glass rounded-2xl flex items-center justify-center p-2 bg-white/10">
-           <Image
-             src="/logo-fau.png"
-             alt="FAU UNNE Logo"
-             width={80}
-             height={80}
-             className="object-contain"
-             priority
-           />
+          <Image
+            src="/logo-fau.png"
+            alt="FAU UNNE Logo"
+            width={80}
+            height={80}
+            className="object-contain"
+            priority
+          />
         </div>
         <div className="text-center">
           <h1 className="text-3xl font-bold text-white tracking-tight">Tecnología Gráfica I_2026</h1>
@@ -136,9 +136,9 @@ export function FormularioQR() {
               </div>
               <h2 className="text-2xl font-bold text-white mb-1">{selectedAlumno.nombre}</h2>
               <p className="text-sm text-cyan-400 font-medium mb-6">Estudiante</p>
-              
-              <button 
-                type="button" 
+
+              <button
+                type="button"
                 onClick={() => setSelectedAlumno(null)}
                 className="text-xs text-gray-500 hover:text-white transition-colors underline decoration-dotted"
               >
@@ -181,11 +181,10 @@ export function FormularioQR() {
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className={`w-full py-4 rounded-xl font-bold text-lg shadow-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] ${
-              status === 'submitting' 
-                ? 'bg-gray-600 cursor-not-allowed opacity-50' 
+            className={`w-full py-4 rounded-xl font-bold text-lg shadow-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] ${status === 'submitting'
+                ? 'bg-gray-600 cursor-not-allowed opacity-50'
                 : 'bg-gradient-to-r from-cyan-600 to-cyan-500 hover:shadow-cyan-500/20'
-            }`}
+              }`}
           >
             {status === 'submitting' ? 'Procesando...' : 'Confirmar Asistencia'}
           </button>

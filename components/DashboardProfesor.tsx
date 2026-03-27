@@ -216,6 +216,7 @@ export function DashboardProfesor() {
 
       <div className="text-center pb-8">
         <p className="text-xs text-gray-600">FAU UNNE - Tecno 1 Admin Panel. Mostrando datos para {filterDate}</p>
+        <p className="text-xs text-gray-500 mt-1">Creado por DG José Gabriel Alderete</p>
       </div>
     </div>
   );
