@@ -23,7 +23,15 @@ async function getAuthClient() {
 
 const SPREADSHEET_ID = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_ID;
 
+function checkConfig() {
+  if (!SPREADSHEET_ID) {
+    throw new Error('NEXT_PUBLIC_GOOGLE_SHEETS_ID is not defined in environment variables');
+  }
+}
+
+
 export async function getAlumnosFromSheet() {
+  checkConfig();
   const auth = await getAuthClient();
   const sheets = google.sheets({ version: 'v4', auth });
 
@@ -46,6 +54,7 @@ export async function getAlumnosFromSheet() {
 }
 
 export async function recordAsistenciaInSheet(asistencia: any) {
+  checkConfig();
   const auth = await getAuthClient();
   const sheets = google.sheets({ version: 'v4', auth });
 
@@ -70,6 +79,7 @@ export async function recordAsistenciaInSheet(asistencia: any) {
 }
 
 export async function getAsistenciasFromSheet() {
+  checkConfig();
   const auth = await getAuthClient();
   const sheets = google.sheets({ version: 'v4', auth });
 
