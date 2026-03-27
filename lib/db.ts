@@ -22,16 +22,25 @@ export interface Asistencia {
   estadoEntrada: 'Presente' | 'Ausente' | 'Tardío';
 }
 
+function readJsonFile(filePath: string) {
+  if (!fs.existsSync(filePath)) return null;
+  const content = fs.readFileSync(filePath, 'utf-8');
+  // Strip UTF-8 BOM if present
+  const cleanContent = content.startsWith('\uFEFF') ? content.slice(1) : content;
+  try {
+    return JSON.parse(cleanContent);
+  } catch (e) {
+    console.error(`Error parsing ${filePath}:`, e);
+    return null;
+  }
+}
+
 export function getAlumnos(): Alumno[] {
-  if (!fs.existsSync(ALUMNOS_FILE)) return [];
-  const content = fs.readFileSync(ALUMNOS_FILE, 'utf8');
-  return JSON.parse(content);
+  return readJsonFile(ALUMNOS_FILE) || [];
 }
 
 export function getAsistencias(): Asistencia[] {
-  if (!fs.existsSync(ASISTENCIAS_FILE)) return [];
-  const content = fs.readFileSync(ASISTENCIAS_FILE, 'utf8');
-  return JSON.parse(content);
+  return readJsonFile(ASISTENCIAS_FILE) || [];
 }
 
 export function saveAsistencias(asistencias: Asistencia[]) {
